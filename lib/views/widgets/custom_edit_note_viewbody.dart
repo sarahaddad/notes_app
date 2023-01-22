@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:noteapp/views/widgets/custom_textfield.dart';
 
 import 'custom_app_bar.dart';
 
@@ -17,7 +18,18 @@ class CustomEditNoteBody extends StatelessWidget {
               icon: Icons.check,
               title: "Edit Notes",
             ),
-          )
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          CustomTextField(hint: "Title"),
+          SizedBox(
+            height: 16,
+          ),
+          CustomTextField(
+            hint: "Content",
+            maxLine: 5,
+          ),
         ],
       ),
     );
