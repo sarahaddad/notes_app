@@ -13,10 +13,8 @@ class CustomBody extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
-        children: const [
-          SafeArea(
-            child: CustomAppBar(),
-          ),
+        children: [
+          SafeArea(child: CustomAppBar(icon: Icons.search, title: 'Notes')),
           Expanded(
             child: ListNoteItems(),
           ),
