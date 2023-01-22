@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noteapp/views/widgets/custom_app_bar.dart';
 
-import 'note_item_view.dart';
+import 'list_note_items.dart';
 
 class CustomBody extends StatelessWidget {
   const CustomBody({
@@ -23,19 +23,5 @@ class CustomBody extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class ListNoteItems extends StatelessWidget {
-  const ListNoteItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder: ((context, index) {
-      return const Padding(
-        padding: EdgeInsets.symmetric(vertical: 8),
-        child: NoteItem(),
-      );
-    }));
   }
 }
