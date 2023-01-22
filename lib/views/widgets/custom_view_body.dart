@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:noteapp/views/widgets/custom_app_bar.dart';
 
+import 'note_item_view.dart';
+
 class CustomBody extends StatelessWidget {
   const CustomBody({
     Key? key,
@@ -15,65 +17,25 @@ class CustomBody extends StatelessWidget {
           SafeArea(
             child: CustomAppBar(),
           ),
-          NoteItem(),
+          Expanded(
+            child: ListNoteItems(),
+          ),
         ],
       ),
     );
   }
 }
 
-class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+class ListNoteItems extends StatelessWidget {
+  const ListNoteItems({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.orangeAccent.shade200,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            ListTile(
-              title: Text(
-                'Note 1',
-                style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.black,
-                ),
-              ),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text(
-                  'my note here will come later ',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black.withOpacity(0.5),
-                  ),
-                ),
-              ),
-              trailing: Icon(
-                Icons.delete,
-                color: Colors.black,
-                size: 30,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(end: 24, top: 16),
-              child: Text(
-                '21 January 2023',
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.5),
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return ListView.builder(itemBuilder: ((context, index) {
+      return const Padding(
+        padding: EdgeInsets.symmetric(vertical: 8),
+        child: NoteItem(),
+      );
+    }));
   }
 }
