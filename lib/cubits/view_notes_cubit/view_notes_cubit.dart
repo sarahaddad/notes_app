@@ -11,5 +11,8 @@ class ViewNoteCubit extends Cubit<ViewNoteStates> {
   fetchAllNotes() {
     var notesBox = Hive.box<NoteModel>(kNotesBox);
     notes = notesBox.values.toList();
+    emit(
+      ViewNoteRebuild(),
+    );
   }
 }
