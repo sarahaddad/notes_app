@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noteapp/cubits/view_notes_cubit/view_notes_cubit.dart';
 import 'package:noteapp/models/note_model.dart';
 import 'package:noteapp/views/widgets/custom_textfield.dart';
-
 import 'custom_app_bar.dart';
+import 'edit_note_colors_list.dart';
 
 class CustomEditNoteBody extends StatefulWidget {
   const CustomEditNoteBody({super.key, required this.note});
@@ -19,7 +19,7 @@ class _CustomEditNoteBodyState extends State<CustomEditNoteBody> {
   Widget build(BuildContext context) {
     String? title, content;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         children: [
           SafeArea(
@@ -53,6 +53,12 @@ class _CustomEditNoteBodyState extends State<CustomEditNoteBody> {
               content = value;
             },
             maxLine: 5,
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          EditNotesColorList(
+            note: widget.note,
           ),
         ],
       ),

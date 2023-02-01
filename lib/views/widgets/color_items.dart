@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:noteapp/cubits/add_note_cubit/add_note_cubit.dart';
+
+import '../../constant.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({
@@ -34,13 +38,7 @@ class ColorItemsList extends StatefulWidget {
 
 class _ColorItemsListState extends State<ColorItemsList> {
   int isPicked = 0;
-  List<Color> colorsList = [
-    Color(0xff264653),
-    Color(0xff2a9d8f),
-    Color(0xffe9c46a),
-    Color(0xfff4a261),
-    Color(0xffe76f51),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -54,10 +52,12 @@ class _ColorItemsListState extends State<ColorItemsList> {
             child: GestureDetector(
               onTap: (() {
                 isPicked = index;
+                BlocProvider.of<AddNoteCubit>(context).color =
+                    kColorsList[index];
                 setState(() {});
               }),
               child: ColorItem(
-                color: colorsList[index],
+                color: kColorsList[index],
                 isActive: isPicked == index,
               ),
             ),
